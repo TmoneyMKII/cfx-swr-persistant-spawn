@@ -15,7 +15,20 @@ let db;
 let dbReady = false;
 
 function getPrimaryIdentifier(playerId) {
-    const ids = GetPlayerIdentifiers(playerId);
+    let ids = [];
+
+    if (typeof GetNumPlayerIdentifiers === 'function' && typeof GetPlayerIdentifier === 'function') {
+        const count = Number(GetNumPlayerIdentifiers(playerId)) || 0;
+        for (let i = 0; i < count; i += 1) {
+            const identifier = GetPlayerIdentifier(playerId, i);
+            if (identifier) {
+                ids.push(identifier);
+            }
+        }
+    } else if (typeof getPlayerIdentifiers === 'function') {
+        ids = getPlayerIdentifiers(playerId) || [];
+    }
+
     if (!ids || ids.length === 0) {
         return null;
     }
