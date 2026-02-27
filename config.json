@@ -1,0 +1,10 @@
+{
+  "dbFileName": "spawn_data.sqlite3",
+  "defaultSpawn": {
+    "x": 148.03,
+    "y": -1296.44,
+    "z": 29.19,
+    "heading": 197.61
+  },
+  "autoSaveIntervalMs": 30000
+}
